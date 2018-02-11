@@ -1,0 +1,126 @@
+.content_inner{
+	width: 1000px;
+	background-color: red;
+	margin: 0 auto;
+	min-height: 100vh;
+	border-radius: 30px;
+}
+
+.container_inner{
+	margin: 0 auto;
+	padding-top: 50px;
+}
+
+.form{
+	text-align: center;
+}
+
+.input_link{
+	display: inline-block;
+	text-decoration: none;
+	color: #000;
+	padding: 10px 30px;
+	border-radius: 30px;
+	background-color: yellow;
+	border: 1px solid black;
+	transition: all 0.3s ease-in-out;
+	margin-right: 10px;
+}
+
+.form .input_link:last-child{
+	margin-right: 0;
+}
+
+.input_link:focus{
+	outline: none;
+}
+
+.input_link:not(.input_field):hover{
+	border-color: transparent;
+}
+
+.input_field{
+	padding: 10px;
+	background-color: aquamarine;
+	min-width: 300px;
+}
+
+.result_wrapper{
+	margin-top: 50px;
+	min-height: 10px;
+}
+
+.input_container, .result_container, .input_form, .load_form, .input_message_success, .input_message_error, .load_message_success, .load_message_error{
+	text-align: center;
+	visibility: hidden;
+	opacity: 0;
+	height: 0;
+	transition: all 0.3s ease-in-out;
+}
+
+.input_message_success.appeared, .input_message_error.appeared, .load_message_success.appeared, .load_message_error.appeared{
+	margin: 10px 0;
+}
+
+.appeared{
+	visibility: visible;
+	opacity: 1;
+	height: auto;
+}
+
+.input_item{
+    width: 25%;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 7px;
+}
+
+.input_item > a{
+	margin-right: 15px;
+}
+
+.result_item > .remove_item{
+	display: none;
+}
+
+.forms_holder{
+	text-align: center;
+}
+
+.forms_holder .input_link{
+	margin-bottom: 10px;
+}
+
+.forms_holder .load_form, .forms_holder .input_form{
+	margin-bottom: 10px;
+}
+
+.forms_holder input[type="text"], .forms_holder textarea{
+	padding: 10px 20px;
+	margin-bottom: 5px;
+	background-color: transparent;
+	border: 1px solid #000;
+	min-width: 210px;
+	border-radius: 30px;
+	color: #000;
+}
+
+.forms_holder input[type="text"]::-webkit-input-placeholder, .forms_holder textarea::-webkit-input-placeholder{
+  color: #000;
+}
+
+.forms_holder input[type="text"]::-moz-placeholder, .forms_holder textarea::-moz-placeholder{
+  color: #000;
+}
+
+.forms_holder input[type="text"]:focus, .forms_holder textarea:focus{
+	outline: none;
+}
+
+.forms_holder .input_submit:hover, .forms_holder .load_submit:hover{
+	cursor: pointer;
+}
+
+#input_password, #load_password{
+	-webkit-text-security: disc;
+}
