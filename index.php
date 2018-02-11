@@ -17,7 +17,7 @@
 						<div class="form">
 							<input type="text" class="input_link input_field">
 							<a href="#" class="input_link insert">Ubaci</a>
-							<a href="#" class="input_link remove_all">Obrisi</a>
+							<a href="#" class="input_link remove_all">Obrisi Sve</a>
 							<a href="#" class="input_link decide">Presudi</a>
 							<a href="#" class="input_link back">Povratak</a>
 							<a href="#" class="input_link input_current">Upisi trenutne</a>
