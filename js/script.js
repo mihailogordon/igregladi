@@ -185,11 +185,7 @@ $(document).ready(function(){
 
 	    latitude = position.coords.latitude; 
 		
-		longitude = position.coords.longitude; 
-
-	    console.log('Latitude: ' + latitude);
-
-	    console.log('Longitude: ' + longitude);
+		longitude = position.coords.longitude;
 
 	}
 
@@ -242,8 +238,6 @@ $(document).ready(function(){
 				var result_string = data;
 				var result_array = result_string.split(";");
 				var n = result_array.length - 1;
-				console.log(n);
-				console.log(result_array);
 				var output  = '<select class="restaurants_select">';
 				output += '<option value="">'+" "+'</option>';
 				for(i=0;i<n;i++){
@@ -271,7 +265,6 @@ $(document).ready(function(){
 						})
 					}
 					else{
-						$(".rest_menu_message_success").html("");
 						$(".rest_menu_message_success").removeClass('appeared');
 					}
 				})
@@ -282,10 +275,6 @@ $(document).ready(function(){
 		})
 
 		$(".rest_form").toggleClass("appeared");
-	})
-
-	$(".restaurants_select").change(function(){
-		console.log("Disolo je do promene!");
 	})
 
 });
