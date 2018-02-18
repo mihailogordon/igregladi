@@ -52,9 +52,7 @@ $output = "<p class='result_message results'>Sledeci restorani sa sledecim jelim
 
 if(count($results) > 0){
 	foreach ($results as $key => $value) {
-
-		/*echo $value . ": <br><br>";*/
-
+		
 		$query = "SELECT * FROM `$value`";
 
 		if($price!=''){
