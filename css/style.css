@@ -1,3 +1,9 @@
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 .content_inner{
 	width: 1000px;
 	background-color: red;
@@ -9,6 +15,20 @@
 .container_inner{
 	margin: 0 auto;
 	padding-top: 50px;
+}
+
+.columns_50_50 .column_left, .columns_50_50 .column_right{
+	width: 50%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.columns_50_50 .column_left{
+	padding-right: 15px;
+}
+
+.columns_50_50 .column_right{
+	padding-left: 15px;
 }
 
 .form{
@@ -50,7 +70,7 @@
 	min-height: 10px;
 }
 
-.input_container, .result_container, .input_form, .load_form, .input_message_success, .input_message_error, .load_message_success, .load_message_error{
+.input_container, .result_container, .input_form, .load_form, .input_message_success, .input_message_error, .load_message_success, .load_message_error, .closest_form, .closest_message_error, .closest_message_success, .rest_form, .rest_message_success, .rest_message_error, .rest_menu_message_success, .rest_menu_message_error{
 	text-align: center;
 	visibility: hidden;
 	opacity: 0;
@@ -95,7 +115,7 @@
 	margin-bottom: 10px;
 }
 
-.forms_holder input[type="text"], .forms_holder textarea{
+.forms_holder input[type="text"], .forms_holder textarea, .forms_holder select{
 	padding: 10px 20px;
 	margin-bottom: 5px;
 	background-color: transparent;
@@ -113,14 +133,61 @@
   color: #000;
 }
 
-.forms_holder input[type="text"]:focus, .forms_holder textarea:focus{
+.forms_holder input[type="text"]:focus, .forms_holder textarea:focus, .forms_holder select{
 	outline: none;
 }
 
-.forms_holder .input_submit:hover, .forms_holder .load_submit:hover{
+.forms_holder select{
+	text-transform: capitalize;
+}
+
+.forms_holder .input_submit:hover, .forms_holder .load_submit:hover, .forms_holder .closest_submit:hover{
 	cursor: pointer;
 }
 
 #input_password, #load_password{
 	-webkit-text-security: disc;
+}
+
+.closest_message_success .result_message{
+	margin: 5px 0;
+} 
+
+.restaurant {
+    margin: 10px 0;
+    font-weight: 800;
+    font-style: italic;
+    text-transform: capitalize;
+}
+
+.restaurant_distance{
+	font-style: italic;
+	margin-bottom: 10px;
+}
+
+.restaurant_item > div{
+    display: inline-block;
+    margin: 3px 0;
+}
+
+.restaurant_item.on_action{
+	font-weight: 600;
+}
+
+.restaurant_item.on_action .restaurant_item_price{
+	position: relative;
+}
+
+.restaurant_item.on_action .restaurant_item_price:after{
+	content: "Akcija";
+	background-color: yellow;
+	position: absolute;
+	font-size: 10px;
+    top: 0px;
+    left: calc(100% + 2px);
+    width: 35px;
+    height: 12px;
+    line-height: 12px;
+    border-radius: 6px;
+    border: 1px solid black;
 }

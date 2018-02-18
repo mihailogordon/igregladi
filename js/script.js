@@ -165,4 +165,127 @@ $(document).ready(function(){
 		$(".input_form textarea").val(values_string);
 	})
 
+	/*geolocation snippet - begin*/
+
+	if (navigator.geolocation) { 
+
+        navigator.geolocation.getCurrentPosition(showLocation); 
+
+    } else { 
+
+        $('#location').html('Geolocation is not supported by this browser.'); 
+
+    }
+
+    var latitude;
+
+    var longitude;
+
+    function showLocation(position) { 
+
+	    latitude = position.coords.latitude; 
+		
+		longitude = position.coords.longitude; 
+
+	    console.log('Latitude: ' + latitude);
+
+	    console.log('Longitude: ' + longitude);
+
+	}
+
+	/*geolocation snippet - end*/
+
+	$(".closest_form_opener").click(function(){
+		$(".closest_form").toggleClass("appeared");
+
+		/*var form = $(".closest_form").find('.closest_form_inner');
+
+		var hidden_lat = '<input type="hidden" name="latitude" class="hidden_input" value="' + latitude + '">';
+
+		var hidden_lon = '<input type="hidden" name="longitude" class="hidden_input" value="' + longitude + '">';
+
+		if(!(form.children(".hidden_input").length>0)){
+
+			form.append(hidden_lat);
+			form.append(hidden_lon);
+		}*/
+
+	})
+
+	$(".closest_form .closest_submit").click(function(){
+
+		var radius = $("#closest_radius").val();
+		var price = $("#closest_price").val();
+		var food = $("#closest_food").val();
+
+		$.ajax({
+            type: "POST",
+            url: "closest.php",
+            data: {radius:radius,price:price,food:food,latitude:latitude,longitude:longitude},
+            success: function(data) {
+            	$(".closest_message_success").addClass("appeared");
+            	$(".closest_message_success").html(data);
+            },
+            error: function(data) {
+            	$(".closest_message_error").addClass("appeared");
+            }
+        });
+	})
+
+	$(".rest_form_opener").click(function(){
+
+		$.ajax({
+			type: "POST",
+			url: "rest.php",
+			data: {},
+			success: function(data) {
+				var result_string = data;
+				var result_array = result_string.split(";");
+				var n = result_array.length - 1;
+				console.log(n);
+				console.log(result_array);
+				var output  = '<select class="restaurants_select">';
+				output += '<option value="">'+" "+'</option>';
+				for(i=0;i<n;i++){
+					output += '<option value="'+result_array[i]+'">'+result_array[i]+'</option>';
+				}
+				output += '</select>'
+				$(".rest_message_success").html(output);
+				$(".rest_message_success").addClass("appeared");
+
+				$(".restaurants_select").change(function(){
+
+					var restaurant = $(this).val();
+					if(restaurant != ''){
+						$.ajax({
+							type: "POST",
+							url: "fetch_rests_menu.php",
+							data: {restaurant:restaurant,latitude:latitude,longitude:longitude},
+							success: function(data) {
+								$(".rest_menu_message_success").html(data);
+								$(".rest_menu_message_success").addClass('appeared');
+				            },
+				            error: function(data) {
+				            	$(".rest_menu_message_error").addClass('appeared');
+				            }
+						})
+					}
+					else{
+						$(".rest_menu_message_success").html("");
+						$(".rest_menu_message_success").removeClass('appeared');
+					}
+				})
+            },
+            error: function(data) {
+            	$(".rest_message_error").addClass("appeared");
+            }
+		})
+
+		$(".rest_form").toggleClass("appeared");
+	})
+
+	$(".restaurants_select").change(function(){
+		console.log("Disolo je do promene!");
+	})
+
 });
